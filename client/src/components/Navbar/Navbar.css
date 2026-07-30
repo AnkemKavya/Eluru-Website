@@ -1,0 +1,173 @@
+.navbar-container{
+  background:#fff;
+  padding:18px 20px 10px;
+}
+
+.navbar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+
+.menu-btn{
+  width:46px;
+  height:46px;
+  border:none;
+  background:#fff;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.menu-btn svg{
+  font-size:28px;
+}
+
+.navbar-logo{
+  flex:1;
+  margin:0 16px;
+}
+
+.navbar-logo h1{
+  display:flex;
+  align-items:center;
+  padding-left: 37px;
+  gap:0px;
+  color:#16a34a;
+  font-size:20px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.leaf{
+  font-size:28px;
+}
+
+.navbar-logo p{
+  color:#777;
+  font-size:12px;
+  margin-top:-4px;
+  padding-left: 60px;
+}
+
+.navbar-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.notification-btn{
+  width:44px;
+  height:44px;
+  border:none;
+  background:#fff;
+  border-radius:12px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.notification-btn svg{
+  font-size:24px;
+}
+
+.notification-dot{
+  width:8px;
+  height:8px;
+  background:red;
+  border-radius:50%;
+  position:absolute;
+  right:10px;
+  top:10px;
+}
+
+.profile-avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#dcfce7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#16a34a;
+  font-weight:bold;
+  font-size:22px;
+}
+
+.delivery-card{
+  margin-top:0;
+  height: 45px;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:15px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.delivery-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.location-icon{
+  color:#16a34a;
+  font-size:24px;
+}
+
+.down-icon{
+  font-size:24px;
+  color:#777;
+}
+
+.search-box{
+  margin-top:12px;
+  background:#f3f4f6;
+  border-radius:18px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  padding:0 18px;
+}
+
+.search-icon{
+  color:#16a34a;
+  font-size:24px;
+}
+
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  margin-left:12px;
+  font-size:16px;
+}
+
+@media(max-width:480px){
+
+.navbar-logo h1{
+  font-size:22px;
+}
+
+.navbar-logo p{
+  font-size:12px;
+}
+
+.menu-btn,
+.notification-btn{
+  width:40px;
+  height:40px;
+}
+
+.profile-avatar{
+  width:40px;
+  height:40px;
+}
+}

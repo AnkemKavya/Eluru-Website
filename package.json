@@ -1,0 +1,13 @@
+{
+  "name": "healthy-eluru",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run dev --prefix client",
+    "server": "npm run dev --prefix server",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "swiper": "^14.0.7"
+  }
+}

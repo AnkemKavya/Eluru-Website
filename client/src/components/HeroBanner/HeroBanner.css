@@ -1,0 +1,162 @@
+/* ==========================================
+   HeroBanner.css
+========================================== */
+
+.hero-container {
+  width: 100%;
+  padding:10px 20px 0;
+}
+
+.hero-slide {
+  height: 220px;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+  90deg,
+  rgba(10, 70, 20, 0.55),
+  rgba(10, 70, 20, 0.20)
+);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  color: #fff;
+}
+
+.hero-overlay h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.hero-overlay p {
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 250px;
+  margin-bottom: 18px;
+}
+
+.hero-overlay button {
+  width: fit-content;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #0ea44b;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-overlay button:hover {
+  background: #0b8c3f;
+  transform: translateY(-2px);
+}
+
+/* Swiper */
+
+.swiper {
+  border-radius: 25px;
+}
+
+.swiper-pagination {
+  bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  width: 28px;
+  border-radius: 10px;
+  background: white;
+  opacity: 1;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+  .hero-slide {
+    height: 220px;
+  }
+
+  .hero-overlay {
+    padding: 30px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 34px;
+  }
+
+  .hero-overlay p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 15px;
+  }
+
+  .hero-slide {
+    height: 200px;
+    border-radius: 20px;
+  }
+
+  .hero-overlay {
+    padding: 25px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .hero-overlay p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .hero-overlay button {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slide {
+    height: 185px;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 24px;
+  }
+
+  .hero-overlay p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-overlay button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

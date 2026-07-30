@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables
+.env
+.env.*
+
+# Build output
+dist/
+build/
+
+# Vite cache
+node_modules/.vite/
+
+# Local editor settings
+.vscode/
+
+# Uploads and temp
+server/uploads/
+.DS_Store
