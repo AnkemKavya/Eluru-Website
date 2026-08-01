@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import banner1 from "../../assets/banners/banner1.jpg";
 import banner2 from "../../assets/banners/banner2.jpg";
 import banner3 from "../../assets/banners/banner3.jpg";
@@ -12,6 +13,7 @@ const bannerData = [
     subtitle: "Farm-fresh vegetables delivered to your doorstep every day.",
     image: banner1,
     button: "Shop Vegetables",
+    link: "/category/Vegetables",
   },
   {
     id: 2,
@@ -19,6 +21,7 @@ const bannerData = [
     subtitle: "Naturally sweet, juicy fruits packed with freshness and nutrition.",
     image: banner2,
     button: "Shop Fruits",
+    link: "/category/Fruits",
   },
   {
     id: 3,
@@ -26,6 +29,7 @@ const bannerData = [
     subtitle: "Freshly prepared breakfast, lunch, dinner, and snacks delivered fast.",
     image: banner3,
     button: "Order Food",
+    link: "/category/Food",
   },
   {
     id: 4,
@@ -33,6 +37,7 @@ const bannerData = [
     subtitle: "Order medicines online and get quick, safe delivery at your home.",
     image: banner4,
     button: "Buy Medicines",
+    link: "/category/Medicine",
   },
   {
     id: 5,
@@ -40,6 +45,7 @@ const bannerData = [
     subtitle: "Schedule health checkups and diagnostic tests from trusted labs.",
     image: banner5,
     button: "Book Now",
+    link: "/category/Tests",
   },
   {
     id: 6,
@@ -47,6 +53,7 @@ const bannerData = [
     subtitle: "Pure milk, eggs, butter, cheese, and dairy essentials delivered daily.",
     image: banner6,
     button: "Shop Dairy",
+    link: "/category/Dairy",
   },
 ];
 
