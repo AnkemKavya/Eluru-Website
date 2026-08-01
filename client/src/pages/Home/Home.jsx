@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import HeroBanner from "../../components/HeroBanner/HeroBanner";
 import CategorySection from "../../components/CategorySection/CategorySection";
+import FeatureSection from "../../components/FeatureSection/FeatureSection";
 import ProductSection from "../../components/ProductSection/ProductSection";
 import AppFooter from "../../components/AppFooter/AppFooter";
 
@@ -13,9 +14,13 @@ function Home() {
     <div className="home">
       <Navbar />
 
+      <SearchBar />
+
       <HeroBanner />
 
       <CategorySection />
+
+      <FeatureSection />
 
       <ProductSection />
 

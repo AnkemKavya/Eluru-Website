@@ -6,10 +6,14 @@ import "./CategoryPage.css";
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
+
   const [searchTerm, setSearchTerm] = useState("");
+  const [foodType, setFoodType] = useState("All");
+  const [mealType, setMealType] = useState("All");
 
   const allProducts = getProducts();
 
+  // Show all products or selected category
   const categoryProducts =
     categoryName.toLowerCase() === "all"
       ? allProducts
@@ -19,7 +23,31 @@ const CategoryPage = () => {
             categoryName.toLowerCase()
         );
 
-  const filteredProducts = categoryProducts.filter(
+  // Start with category products
+  let filteredProducts = categoryProducts;
+
+  // Food Filters
+  if (categoryName.toLowerCase() === "food") {
+
+    // Veg / Non-Veg
+    if (foodType !== "All") {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.foodType === foodType
+      );
+    }
+
+    // Breakfast / Lunch / Dinner etc.
+    if (mealType !== "All") {
+      filteredProducts = filteredProducts.filter(
+        (product) =>
+          product.mealType &&
+          product.mealType.includes(mealType)
+      );
+    }
+  }
+
+  // Search Filter
+  filteredProducts = filteredProducts.filter(
     (product) =>
       product.name
         .toLowerCase()
@@ -43,22 +71,80 @@ const CategoryPage = () => {
 
           <p>{filteredProducts.length} Products Available</p>
 
+          {/* Search */}
           <div className="search-box">
-            <input
+            <input 
               type="text"
-              placeholder={`Search in ${
+              placeholder={`Search ${
                 categoryName.toLowerCase() === "all"
                   ? "products"
                   : categoryName.toLowerCase()
-              }...`}
+              } items...`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
+          {/* Food Filters */}
+          {categoryName.toLowerCase() === "food" && (
+            <>
+              {/* Veg / Non-Veg */}
+
+              <div className="food-type-chips">
+
+                <button
+                  className={foodType === "All" ? "active" : ""}
+                  onClick={() => setFoodType("All")}
+                >
+                  All
+                </button>
+
+                <button
+                  className={foodType === "Veg" ? "active" : ""}
+                  onClick={() => setFoodType("Veg")}
+                >
+                  🥬 Veg
+                </button>
+
+                <button
+                  className={foodType === "Non-Veg" ? "active" : ""}
+                  onClick={() => setFoodType("Non-Veg")}
+                >
+                  🍗 Non-Veg
+                </button>
+
+              </div>
+
+              {/* Meal Types */}
+
+              <div className="meal-type-chips">
+
+                {[
+                  "All",
+                  "Breakfast",
+                  "Lunch",
+                  "Dinner",
+                  "Snacks",
+                  "Juices",
+                  "Ice Cream",
+                ].map((meal) => (
+                  <button
+                    key={meal}
+                    className={mealType === meal ? "active" : ""}
+                    onClick={() => setMealType(meal)}
+                  >
+                    {meal}
+                  </button>
+                ))}
+
+              </div>
+            </>
+          )}
+
         </div>
 
         <div className="product-grid">
+
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard
@@ -72,6 +158,7 @@ const CategoryPage = () => {
               <p>Try another search.</p>
             </div>
           )}
+
         </div>
 
       </div>

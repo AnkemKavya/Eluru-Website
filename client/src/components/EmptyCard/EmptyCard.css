@@ -1,0 +1,48 @@
+.empty-card{
+    width:100%;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+.empty-icon{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#ecfdf5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.empty-icon svg{
+    font-size:54px;
+    color:#16a34a;
+}
+
+.empty-card h2{
+    font-size:25px;
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.empty-card p{
+    font-size:16px;
+    color:#6b7280;
+    margin-bottom:28px;
+    line-height:1.5;
+}
+
+.empty-card button{
+    border:none;
+    background:#16a34a;
+    color:#fff;
+    padding:15px 36px;
+    border-radius:40px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}

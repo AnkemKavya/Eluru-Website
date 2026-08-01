@@ -31,6 +31,9 @@ const ProductCard = ({ product }) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+     
+    // Notify the app that the cart has changed
+    window.dispatchEvent(new Event("cartUpdated"));
     setQuantity(qty);
   };
 
