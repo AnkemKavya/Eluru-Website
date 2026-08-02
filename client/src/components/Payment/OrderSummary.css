@@ -1,0 +1,62 @@
+/* ==========================
+   Order Summary
+========================== */
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+
+    font-size:16px;
+    color:#374151;
+}
+
+.summary-row:last-child{
+    margin-bottom:0;
+}
+
+/* FREE Delivery */
+
+.free{
+    color:#16a34a;
+    font-weight:700;
+}
+
+/* Divider */
+
+.summary-divider{
+    border:none;
+    border-top:1px solid #ececec;
+    margin:18px 0;
+}
+
+/* Total */
+
+.summary-row.total{
+    font-size:20px;
+    font-weight:700;
+    color:#111827;
+}
+
+.summary-row.total span:last-child{
+    color:#16a34a;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.summary-row{
+    font-size:15px;
+    margin-bottom:16px;
+}
+
+.summary-row.total{
+    font-size:18px;
+}
+
+}

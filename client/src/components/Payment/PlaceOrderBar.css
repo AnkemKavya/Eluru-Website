@@ -1,0 +1,110 @@
+/* ==========================
+   Place Order Bottom Bar
+========================== */
+
+.place-order-bar{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:100%;
+    max-width:480px;
+
+    background:#fff;
+
+    border-top:1px solid #ececec;
+    box-shadow:0 -4px 15px rgba(0,0,0,.08);
+
+    padding:16px 20px;
+
+    display:flex;
+    gap:16px;
+
+    box-sizing:border-box;
+    z-index:1000;
+}
+
+/* ==========================
+   Back Button
+========================== */
+
+.back-btn{
+    flex:1;
+
+    height:56px;
+
+    border:2px solid #16a34a;
+    border-radius:16px;
+
+    background:#fff;
+    color:#16a34a;
+
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.back-btn:hover{
+    background:#f0fdf4;
+}
+
+/* ==========================
+   Place Order Button
+========================== */
+
+.place-order-btn{
+    flex:2;
+
+    height:56px;
+
+    border:none;
+    border-radius:16px;
+
+    background:#16a34a;
+    color:#fff;
+
+    font-size:17px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.place-order-btn:hover{
+    background:#15803d;
+}
+
+.place-order-btn:disabled{
+    background:#d1d5db;
+    color:#6b7280;
+    cursor:not-allowed;
+}
+
+.place-order-btn:active{
+    transform:scale(.98);
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:480px){
+
+.place-order-bar{
+    padding:14px 16px calc(14px + env(safe-area-inset-bottom));
+    gap:12px;
+}
+
+.back-btn,
+.place-order-btn{
+    height:52px;
+    font-size:16px;
+    border-radius:14px;
+}
+
+}

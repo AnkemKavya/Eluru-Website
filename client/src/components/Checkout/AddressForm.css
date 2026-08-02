@@ -1,0 +1,150 @@
+/* ==========================
+   Address Card
+========================== */
+
+.address-card{
+    background:#fff;
+    border:1px solid #ececec;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.04);
+    width:100%;
+    box-sizing:border-box;
+}
+
+/* ==========================
+   Title
+========================== */
+
+.address-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.address-title h3{
+    margin:0;
+    font-size:20px;
+    font-weight:700;
+    color:#111827;
+}
+
+.address-icon{
+    font-size:24px;
+    color:#16a34a;
+}
+
+/* ==========================
+   Input Groups
+========================== */
+
+.input-group{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+
+    padding:0 16px;
+    height:56px;
+
+    margin-bottom:16px;
+}
+
+.input-icon{
+    font-size:22px;
+    color:#16a34a;
+}
+
+.input-group input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+
+    font-size:16px;
+    color:#111827;
+}
+
+.input-group input::placeholder{
+    color:#9ca3af;
+}
+
+/* ==========================
+   City + Pincode
+========================== */
+
+.address-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    width:100%;
+}
+
+.address-row input{
+    flex:1;
+    min-width:0;
+    width:100%;
+    box-sizing:border-box;
+
+    height:56px;
+
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+
+    padding:0 16px;
+
+    font-size:16px;
+    outline:none;
+
+    background:#f8fafc;
+}
+
+.address-row input::placeholder{
+    color:#9ca3af;
+}
+
+.address-row input:focus,
+.input-group input:focus{
+    outline:none;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.address-card{
+    padding:16px;
+    border-radius:16px;
+}
+
+.address-title h3{
+    font-size:18px;
+}
+
+.input-group{
+    height:52px;
+    padding:0 14px;
+}
+
+.input-group input{
+    font-size:15px;
+}
+
+.address-row{
+    flex-direction:column;
+    gap:12px;
+}
+
+.address-row input{
+    height:52px;
+    font-size:15px;
+}
+
+}

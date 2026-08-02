@@ -1,0 +1,148 @@
+/* ==========================
+   Payment Page
+========================== */
+
+.payment-page{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    margin:0 auto;
+    background:#fff;
+
+    display:flex;
+    flex-direction:column;
+
+    box-sizing:border-box;
+}
+
+/* ==========================
+   Header
+========================== */
+
+.payment-header{
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    padding:0 20px;
+
+    border-bottom:1px solid #ececec;
+
+    background:#fff;
+}
+
+.payment-header button{
+    width:40px;
+    height:40px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#f5f5f5;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+}
+
+.payment-header button svg{
+    font-size:20px;
+    color:#374151;
+}
+
+.payment-title{
+    display:flex;
+    flex-direction:column;
+}
+
+.payment-title h2{
+    margin:0;
+
+    font-size:20px;
+    font-weight:700;
+
+    color:#0f172a;
+}
+
+.payment-title p{
+    margin-top:2px;
+
+    font-size:15px;
+
+    color:#6b7280;
+}
+
+/* ==========================
+   Content
+========================== */
+
+.payment-content{
+    flex:1;
+
+    padding:24px 20px 150px;
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+    background:#fafafa;
+
+    box-sizing:border-box;
+}
+
+/* ==========================
+   Card
+========================== */
+
+.payment-card{
+    background:#fff;
+
+    border:1px solid #ececec;
+    border-radius:22px;
+
+    padding:22px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.03);
+}
+
+.payment-card h3{
+    margin:0 0 18px;
+
+    font-size:18px;
+    font-weight:700;
+
+    color:#111827;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:480px){
+
+.payment-header{
+    padding:0 16px;
+}
+
+.payment-content{
+    padding:18px 16px 110px;
+}
+
+.payment-card{
+    padding:18px;
+    border-radius:18px;
+}
+
+.payment-title h2{
+    font-size:18px;
+}
+
+.payment-title p{
+    font-size:14px;
+}
+
+}

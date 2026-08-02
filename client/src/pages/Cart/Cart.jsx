@@ -4,10 +4,15 @@ import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 
 import EmptyCard from "../../components/EmptyCard/EmptyCard";
+import CartItem from "../../components/Cart/CartItem";
+import BillSummary from "../../components/Cart/BillSummary";
+import CheckoutBar from "../../components/Cart/CheckoutBar";
 
 export default function Cart() {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+
+  /* Load Cart */
 
   useEffect(() => {
     const loadCart = () => {
@@ -23,7 +28,76 @@ export default function Cart() {
       window.removeEventListener("cartUpdated", loadCart);
   }, []);
 
-  /* Empty Cart */
+  /* ===========================
+     Cart Functions
+  ========================== */
+
+  const updateCart = (updatedCart) => {
+    setCart(updatedCart);
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(updatedCart)
+    );
+
+    window.dispatchEvent(new Event("cartUpdated"));
+  };
+
+  const onIncrease = (id) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+
+    updateCart(updatedCart);
+  };
+
+  const onDecrease = (id) => {
+    const updatedCart = cart
+      .map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: Math.max(1, item.quantity - 1),
+            }
+          : item
+      );
+
+    updateCart(updatedCart);
+  };
+
+  const onDelete = (id) => {
+    const updatedCart = cart.filter(
+      (item) => item.id !== id
+    );
+
+    updateCart(updatedCart);
+  };
+
+  /* ===========================
+     Bill Calculations
+  ========================== */
+
+  const itemTotal = cart.reduce(
+    (sum, item) =>
+      sum + item.price * item.quantity,
+    0
+  );
+
+  const deliveryCharge =
+    itemTotal >= 499 ? 0 : 40;
+
+  const handlingCharge = 10;
+
+  const grandTotal =
+    itemTotal +
+    deliveryCharge +
+    handlingCharge;
+
+  /* ===========================
+     Empty Cart
+  ========================== */
 
   if (cart.length === 0) {
     return (
@@ -49,10 +123,13 @@ export default function Cart() {
     );
   }
 
-  /* Cart Items */
+  /* ===========================
+     Cart Page
+  ========================== */
 
   return (
     <div className="cart-page">
+
       <header className="cart-header">
         <button onClick={() => navigate(-1)}>
           <HiOutlineArrowLeft />
@@ -61,19 +138,33 @@ export default function Cart() {
         <h2>My Cart</h2>
       </header>
 
-      {cart.map((item) => (
-        <div className="cart-item" key={item.id}>
-          <img src={item.image} alt={item.name} />
+      <div className="cart-content">
 
-          <div>
-            <h3>{item.name}</h3>
+        {cart.map((item) => (
+          <CartItem
+            key={item.id}
+            item={item}
+            onIncrease={onIncrease}
+            onDecrease={onDecrease}
+            onDelete={onDelete}
+          />
+        ))}
 
-            <p>₹{item.price}</p>
+        <BillSummary
+          itemTotal={itemTotal}
+          deliveryCharge={deliveryCharge}
+          handlingCharge={handlingCharge}
+          grandTotal={grandTotal}
+        />
 
-            <p>Qty: {item.quantity}</p>
-          </div>
-        </div>
-      ))}
+      </div>
+
+      <CheckoutBar
+        total={grandTotal}
+        itemCount={cart.length}
+        onCheckout={() => navigate("/checkout")}
+      />
+
     </div>
   );
 }

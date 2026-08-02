@@ -1,0 +1,69 @@
+/* ==========================
+   Delivery Address
+========================== */
+
+.delivery-info{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.delivery-row{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.delivery-icon{
+    font-size:22px;
+    color:#16a34a;
+    flex-shrink:0;
+    margin-top:2px;
+}
+
+.delivery-row h4{
+    margin:0 0 6px;
+
+    font-size:17px;
+    font-weight:700;
+
+    color:#111827;
+}
+
+.delivery-row p{
+    margin:4px 0;
+
+    font-size:15px;
+    line-height:1.5;
+
+    color:#6b7280;
+}
+
+.delivery-row:not(:last-child){
+    padding-bottom:16px;
+    border-bottom:1px solid #f3f4f6;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.delivery-info{
+    gap:18px;
+}
+
+.delivery-icon{
+    font-size:20px;
+}
+
+.delivery-row h4{
+    font-size:16px;
+}
+
+.delivery-row p{
+    font-size:14px;
+}
+
+}

@@ -1,0 +1,76 @@
+/* ==========================
+   Bottom Checkout Button
+========================== */
+
+.checkout-button-container{
+    position:fixed;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+
+    width:100%;
+    max-width:480px;
+
+    background:#fff;
+
+    padding:16px 20px calc(16px + env(safe-area-inset-bottom));
+
+    border-top:1px solid #ececec;
+
+    box-shadow:0 -4px 16px rgba(0,0,0,.08);
+
+    z-index:1000;
+}
+
+/* ==========================
+   Button
+========================== */
+
+.checkout-button{
+    width:100%;
+    height:56px;
+
+    border:none;
+    border-radius:16px;
+
+    background:#16a34a;
+    color:#fff;
+
+    font-size:18px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+}
+
+.checkout-button:hover{
+    background:#15803d;
+}
+
+.checkout-button:active{
+    transform:scale(.98);
+}
+
+.checkout-button:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.checkout-button-container{
+    padding:14px 16px calc(14px + env(safe-area-inset-bottom));
+}
+
+.checkout-button{
+    height:52px;
+    font-size:17px;
+    border-radius:14px;
+}
+
+}

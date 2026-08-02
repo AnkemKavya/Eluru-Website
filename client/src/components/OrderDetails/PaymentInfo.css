@@ -1,0 +1,168 @@
+/* ==========================
+   Payment Details
+========================== */
+
+.payment-info{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* ==========================
+   Payment Row
+========================== */
+
+.payment-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+}
+
+.payment-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.payment-method-icon{
+    width:52px;
+    height:52px;
+
+    border-radius:16px;
+
+    background:#dcfce7;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+}
+
+.payment-method-icon svg{
+    font-size:26px;
+    color:#16a34a;
+}
+
+.payment-left h4{
+    margin:0 0 4px;
+
+    font-size:17px;
+    font-weight:700;
+
+    color:#111827;
+}
+
+.payment-left p{
+    margin:0;
+
+    font-size:14px;
+    color:#6b7280;
+}
+
+/* ==========================
+   Payment Status
+========================== */
+
+.payment-status{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 12px;
+
+    border-radius:20px;
+
+    background:#ecfdf5;
+}
+
+.payment-status svg{
+    font-size:18px;
+    color:#16a34a;
+}
+
+.payment-status span{
+    font-size:14px;
+    font-weight:600;
+    color:#16a34a;
+}
+
+/* ==========================
+   Divider
+========================== */
+
+.payment-info hr{
+    border:none;
+    border-top:1px solid #ececec;
+    margin:0;
+}
+
+/* ==========================
+   Total
+========================== */
+
+.payment-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.payment-total span{
+    font-size:16px;
+    color:#6b7280;
+}
+
+.payment-total h2{
+    margin:0;
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#111827;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.payment-row{
+    align-items:flex-start;
+}
+
+.payment-method-icon{
+    width:46px;
+    height:46px;
+}
+
+.payment-method-icon svg{
+    font-size:22px;
+}
+
+.payment-left h4{
+    font-size:16px;
+}
+
+.payment-left p{
+    font-size:13px;
+}
+
+.payment-status{
+    padding:6px 10px;
+}
+
+.payment-status span{
+    font-size:13px;
+}
+
+.payment-total span{
+    font-size:15px;
+}
+
+.payment-total h2{
+    font-size:20px;
+}
+
+}

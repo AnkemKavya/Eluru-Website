@@ -1,0 +1,165 @@
+/* ==========================
+   Order Details Page
+========================== */
+
+.order-details-page{
+    width:100%;
+    max-width:480px;
+    margin:auto;
+    min-height:100vh;
+    background:#f8fafc;
+}
+
+/* ==========================
+   Header
+========================== */
+
+.order-details-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    padding:18px 20px;
+
+    background:#fff;
+    border-bottom:1px solid #ececec;
+}
+
+.back-btn{
+    width:44px;
+    height:44px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#f3f4f6;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+}
+
+.back-btn svg{
+    font-size:22px;
+    color:#374151;
+}
+
+.order-details-header h2{
+    margin:0;
+
+    font-size:20px;
+    font-weight:700;
+
+    color:#0f172a;
+}
+
+.order-details-header p{
+    margin-top:4px;
+
+    font-size:15px;
+    color:#6b7280;
+}
+
+/* ==========================
+   Content
+========================== */
+
+.order-details-content{
+    padding:20px;
+    padding-bottom:110px;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* ==========================
+   Shared Cards
+========================== */
+
+.order-card{
+    background:#fff;
+
+    border:1px solid #ececec;
+    border-radius:22px;
+
+    padding:22px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.order-card h3{
+    margin:0 0 20px;
+
+    font-size:18px;
+    font-weight:700;
+
+    color:#0f172a;
+}
+
+/* ==========================
+   Empty State
+========================== */
+
+.order-not-found{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+    gap:18px;
+
+    text-align:center;
+}
+
+.order-not-found h2{
+    color:#111827;
+}
+
+.order-not-found button{
+    border:none;
+    background:#16a34a;
+    color:#fff;
+
+    padding:12px 24px;
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:480px){
+
+.order-details-header{
+    padding:16px;
+}
+
+.order-details-header h2{
+    font-size:18px;
+}
+
+.order-details-header p{
+    font-size:14px;
+}
+
+.order-details-content{
+    padding:16px;
+    gap:16px;
+}
+
+.order-card{
+    padding:18px;
+    border-radius:18px;
+}
+
+.order-card h3{
+    font-size:17px;
+}
+
+}
