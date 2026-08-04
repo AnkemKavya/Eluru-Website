@@ -1,0 +1,282 @@
+/* ==========================
+   Saved Addresses
+========================== */
+
+.saved-addresses{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* ==========================
+   Add Address Button
+========================== */
+
+.new-address-btn{
+
+    width:180px;
+
+    height:46px;
+
+    border:1px solid #16a34a;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#16a34a;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.new-address-btn:hover{
+    background:#ecfdf5;
+}
+
+/* ==========================
+   Section Title
+========================== */
+
+.saved-addresses h2{
+
+    margin:10px 0 18px;
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+/* ==========================
+   Address Card
+========================== */
+.saved-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    padding:18px;
+    margin-bottom:16px;
+
+    background:#fff;
+
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+.saved-left{
+    display:flex;
+    gap:14px;
+    flex:1;
+}
+
+.saved-left input{
+    width:22px;
+    height:22px;
+    margin-top:4px;
+    accent-color:#16a34a;
+}
+
+.saved-left{
+
+    display:flex;
+
+    gap:14px;
+
+    flex:1;
+
+}
+
+.saved-left h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:0 0 6px;
+
+    font-size:18px;
+
+    color:#111827;
+
+}
+
+.saved-left h4{
+
+    margin:0 0 6px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.saved-left p{
+
+    display:flex;
+
+    gap:6px;
+
+    margin:0;
+
+    color:#6b7280;
+
+}
+
+.saved-card:hover{
+
+    border-color:#16a34a;
+
+    box-shadow:0 8px 18px rgba(22,163,74,.10);
+
+}
+
+/* ==========================
+   Card Header
+========================== */
+
+.saved-card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+
+/* ==========================
+   Edit/Delete
+========================== */
+.saved-right{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.saved-right button{
+
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+}
+
+.saved-right svg{
+
+    font-size:20px;
+
+}
+
+.saved-right button:first-child svg{
+
+    color:#16a34a;
+
+}
+
+.saved-right button:last-child svg{
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   Address Info
+========================== */
+
+.saved-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.saved-info h4{
+
+    margin:0 0 6px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.saved-info p{
+
+    margin:0;
+
+    display:flex;
+
+    gap:6px;
+
+    color:#6b7280;
+
+    font-size:15px;
+
+}
+
+.saved-info svg{
+
+    color:#16a34a;
+
+    flex-shrink:0;
+
+}
+
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:480px){
+
+.saved-addresses{
+    gap:16px;
+}
+
+.saved-addresses h2{
+    font-size:20px;
+}
+
+.saved-card{
+    padding:16px;
+    border-radius:18px;
+}
+
+.saved-card-header{
+    margin-bottom:14px;
+}
+
+.new-address-btn{
+    height:52px;
+    font-size:16px;
+}
+
+}

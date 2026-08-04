@@ -20,7 +20,7 @@
     display:flex;
     align-items:center;
     gap:10px;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
 .address-title h3{
@@ -36,42 +36,143 @@
 }
 
 /* ==========================
+   Address Type
+========================== */
+
+.address-type{
+    margin-bottom:22px;
+}
+
+.address-type label{
+    display:block;
+    margin-bottom:12px;
+
+    font-size:15px;
+    font-weight:700;
+
+    color:#111827;
+}
+
+.type-options{
+    display:flex;
+    gap:12px;
+}
+
+.type-options button{
+
+    flex:1;
+
+    height:48px;
+
+    border:2px solid #d1d5db;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:600;
+
+    color:#4b5563;
+
+    transition:.25s;
+}
+
+.type-options button svg{
+    font-size:18px;
+}
+
+.type-options button:hover{
+
+    border-color:#16a34a;
+
+    color:#16a34a;
+
+}
+
+.type-options button.active{
+
+    background:#16a34a;
+
+    color:#fff;
+
+    border-color:#16a34a;
+
+    box-shadow:0 6px 18px rgba(22,163,74,.22);
+
+}
+
+/* ==========================
    Input Groups
 ========================== */
 
 .input-group{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
 
     background:#f8fafc;
 
     border:1px solid #e5e7eb;
+
     border-radius:14px;
 
     padding:0 16px;
+
     height:56px;
 
     margin-bottom:16px;
+
+    transition:.25s;
+
+}
+
+.input-group:focus-within{
+
+    border-color:#16a34a;
+
+    box-shadow:0 0 0 3px rgba(22,163,74,.08);
+
 }
 
 .input-icon{
+
     font-size:22px;
+
     color:#16a34a;
+
 }
 
 .input-group input{
+
     flex:1;
+
     border:none;
+
     outline:none;
+
     background:transparent;
 
     font-size:16px;
+
     color:#111827;
+
 }
 
 .input-group input::placeholder{
+
     color:#9ca3af;
+
 }
 
 /* ==========================
@@ -79,45 +180,60 @@
 ========================== */
 
 .address-row{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:16px;
+
     width:100%;
+
 }
 
 .address-row input{
-    flex:1;
-    min-width:0;
+
     width:100%;
-    box-sizing:border-box;
 
     height:56px;
 
     border:1px solid #e5e7eb;
+
     border-radius:14px;
 
     padding:0 16px;
 
+    background:#f8fafc;
+
     font-size:16px;
+
     outline:none;
 
-    background:#f8fafc;
+    transition:.25s;
+
+    box-sizing:border-box;
+
+}
+
+.address-row input:focus{
+
+    border-color:#16a34a;
+
+    box-shadow:0 0 0 3px rgba(22,163,74,.08);
+
 }
 
 .address-row input::placeholder{
-    color:#9ca3af;
-}
 
-.address-row input:focus,
-.input-group input:focus{
-    outline:none;
+    color:#9ca3af;
+
 }
 
 /* ==========================
    Mobile
 ========================== */
 
-@media (max-width:480px){
+@media(max-width:480px){
 
 .address-card{
     padding:16px;
@@ -128,9 +244,38 @@
     font-size:18px;
 }
 
+.address-type{
+    margin-bottom:18px;
+}
+
+.address-type label{
+    font-size:14px;
+}
+
+.type-options{
+    gap:8px;
+}
+
+.type-options button{
+
+    height:44px;
+
+    font-size:13px;
+
+    gap:6px;
+
+}
+
+.type-options button svg{
+    font-size:16px;
+}
+
 .input-group{
+
     height:52px;
+
     padding:0 14px;
+
 }
 
 .input-group input{
@@ -138,13 +283,19 @@
 }
 
 .address-row{
-    flex-direction:column;
+
+    grid-template-columns:1fr;
+
     gap:12px;
+
 }
 
 .address-row input{
+
     height:52px;
+
     font-size:15px;
+
 }
 
 }

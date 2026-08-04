@@ -6,6 +6,7 @@ import {
   HiOutlineUser,
   HiOutlinePhone,
   HiOutlineHome,
+  HiOutlineOfficeBuilding,
 } from "react-icons/hi";
 
 const AddressForm = ({ address, onChange }) => {
@@ -13,10 +14,67 @@ const AddressForm = ({ address, onChange }) => {
     <div className="address-card">
 
       <div className="address-title">
-
         <HiOutlineLocationMarker className="address-icon" />
-
         <h3>Delivery Address</h3>
+      </div>
+
+      {/* Address Type */}
+
+      <div className="address-type">
+
+        <label>Save Address As</label>
+
+        <div className="type-options">
+
+          <button
+            type="button"
+            className={address.type === "Home" ? "active" : ""}
+            onClick={() =>
+              onChange({
+                target: {
+                  name: "type",
+                  value: "Home",
+                },
+              })
+            }
+          >
+            <HiOutlineHome />
+            Home
+          </button>
+
+          <button
+            type="button"
+            className={address.type === "Office" ? "active" : ""}
+            onClick={() =>
+              onChange({
+                target: {
+                  name: "type",
+                  value: "Office",
+                },
+              })
+            }
+          >
+            <HiOutlineOfficeBuilding />
+            Office
+          </button>
+
+          <button
+            type="button"
+            className={address.type === "Other" ? "active" : ""}
+            onClick={() =>
+              onChange({
+                target: {
+                  name: "type",
+                  value: "Other",
+                },
+              })
+            }
+          >
+            <HiOutlineLocationMarker />
+            Other
+          </button>
+
+        </div>
 
       </div>
 
