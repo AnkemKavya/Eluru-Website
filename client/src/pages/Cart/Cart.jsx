@@ -91,9 +91,7 @@ export default function Cart() {
   const handlingCharge = 10;
 
   const grandTotal =
-    itemTotal +
-    deliveryCharge +
-    handlingCharge;
+    itemTotal + deliveryCharge;
 
   /* ===========================
      Empty Cart
@@ -128,18 +126,25 @@ export default function Cart() {
   ========================== */
 
   return (
-    <div className="cart-page">
+  <div className="cart-page">
 
-      <header className="cart-header">
-        <button onClick={() => navigate(-1)}>
-          <HiOutlineArrowLeft />
-        </button>
+    {/* Header */}
+    <header className="cart-header">
+      <button onClick={() => navigate(-1)}>
+        <HiOutlineArrowLeft />
+      </button>
 
+      <div className="cart-header-text">
         <h2>My Cart</h2>
-      </header>
+        <p>{cart.length} item{cart.length > 1 ? "s" : ""}</p>
+      </div>
+    </header>
 
-      <div className="cart-content">
+    {/* Scrollable Content */}
+    <div className="cart-content">
 
+      {/* Cart Items */}
+      <div className="cart-items">
         {cart.map((item) => (
           <CartItem
             key={item.id}
@@ -149,22 +154,26 @@ export default function Cart() {
             onDelete={onDelete}
           />
         ))}
+      </div>
 
+      {/* Bill Details */}
+      <div className="cart-bottom">
         <BillSummary
           itemTotal={itemTotal}
           deliveryCharge={deliveryCharge}
-          handlingCharge={handlingCharge}
           grandTotal={grandTotal}
         />
-
       </div>
 
-      <CheckoutBar
-        total={grandTotal}
-        itemCount={cart.length}
-        onCheckout={() => navigate("/checkout")}
-      />
-
     </div>
-  );
+
+    {/* Fixed Checkout Bar */}
+    <CheckoutBar
+      total={grandTotal}
+      itemCount={cart.length}
+      onCheckout={() => navigate("/checkout")}
+    />
+
+  </div>
+);
 }

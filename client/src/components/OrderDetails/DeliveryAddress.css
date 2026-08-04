@@ -5,65 +5,118 @@
 .delivery-info{
     display:flex;
     flex-direction:column;
-    gap:20px;
 }
 
 .delivery-row{
     display:flex;
     align-items:flex-start;
-    gap:14px;
+    gap:18px;
+
+    padding:18px 0;
+}
+
+.delivery-row:first-child{
+    padding-top:0;
+}
+
+.delivery-row:last-child{
+    padding-bottom:0;
+}
+
+.delivery-row:not(:last-child){
+    border-bottom:1px solid #ececec;
 }
 
 .delivery-icon{
-    font-size:22px;
+    width:42px;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:26px;
+
     color:#16a34a;
+
     flex-shrink:0;
-    margin-top:2px;
+}
+
+.delivery-text{
+    flex:1;
 }
 
 .delivery-row h4{
-    margin:0 0 6px;
+    margin:0;
 
-    font-size:17px;
+    font-size:20px;
     font-weight:700;
 
     color:#111827;
 }
 
 .delivery-row p{
-    margin:4px 0;
+    margin:8px 0 0;
 
-    font-size:15px;
-    line-height:1.5;
+    font-size:16px;
+    line-height:1.7;
 
     color:#6b7280;
 }
 
-.delivery-row:not(:last-child){
-    padding-bottom:16px;
-    border-bottom:1px solid #f3f4f6;
+/* Name */
+
+.delivery-name{
+    font-size:22px;
+    font-weight:700;
+    color:#111827;
+}
+
+/* Phone */
+
+.delivery-phone{
+    margin-top:6px;
+    color:#6b7280;
+}
+
+/* Address */
+
+.delivery-address{
+    margin-top:6px;
+}
+
+.delivery-city{
+    margin-top:4px;
 }
 
 /* ==========================
    Mobile
 ========================== */
 
-@media (max-width:480px){
+@media(max-width:480px){
 
-.delivery-info{
-    gap:18px;
+.delivery-row{
+    gap:16px;
+    padding:16px 0;
 }
 
 .delivery-icon{
-    font-size:20px;
+    width:36px;
+    height:36px;
+    font-size:22px;
 }
 
 .delivery-row h4{
-    font-size:16px;
+    font-size:18px;
 }
 
 .delivery-row p{
-    font-size:14px;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.delivery-name{
+    font-size:20px;
 }
 
 }

@@ -2,16 +2,19 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:12px;
+    gap:8px;
+
+    height:30px;
 
     background:#ecfdf5;
-    border-radius:30px;
-    padding:4px;
+    border-radius:18px;
+
+    padding:2px 4px;
 }
 
 .qty-btn{
-    width:36px;
-    height:36px;
+    width:26px;
+    height:26px;
 
     border:none;
     border-radius:50%;
@@ -20,8 +23,8 @@
     color:#16a34a;
 
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     cursor:pointer;
     transition:.2s;
@@ -33,14 +36,15 @@
 }
 
 .qty-btn svg{
-    font-size:18px;
+    font-size:15px;
 }
 
 .qty-value{
-    min-width:24px;
+    min-width:20px;
     text-align:center;
 
-    font-size:18px;
+    font-size:14px;
     font-weight:700;
+
     color:#16a34a;
 }
