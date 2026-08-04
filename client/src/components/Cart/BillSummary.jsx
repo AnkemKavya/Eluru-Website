@@ -32,11 +32,6 @@ const BillSummary = ({
         )}
       </div>
 
-      <div className="bill-row">
-        <span>Handling Charge</span>
-        <span>₹{handlingCharge}</span>
-      </div>
-
       <hr />
 
       <div className="bill-total">
