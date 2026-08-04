@@ -16,8 +16,9 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+    box-shadow:0 -4px 12px rgba(0,0,0,.08);
 
-    z-index:999;
+    z-index:100;
 }
 
 .checkout-info{

@@ -4,13 +4,19 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 
 import AddressForm from "../../components/Checkout/AddressForm";
 import CheckoutButton from "../../components/Checkout/CheckoutButton";
+import SavedAddresses from "../../components/Checkout/SavedAddresses";
 
 import "./Checkout.css";
 
 export default function Checkout() {
   const navigate = useNavigate();
 
+  const [addresses, setAddresses] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState(null);
+
   const [address, setAddress] = useState({
+    type: "Home",
     fullName: "",
     phone: "",
     address: "",
@@ -19,31 +25,34 @@ export default function Checkout() {
     pincode: "",
   });
 
-  const [savedAddress, setSavedAddress] = useState(null);
   const [error, setError] = useState("");
 
-  // Load previously used address (don't auto-fill)
-  useEffect(() => {
-    const data = JSON.parse(
-      localStorage.getItem("deliveryAddress")
-    );
+  /* Load Saved Addresses */
 
-    if (data) {
-      setSavedAddress(data);
+  useEffect(() => {
+    const saved =
+      JSON.parse(localStorage.getItem("addresses")) || [];
+
+    setAddresses(saved);
+
+    if (saved.length === 0) {
+      setShowForm(true);
+    } else {
+      setSelectedAddress(saved[0]);
+      setShowForm(false);
     }
   }, []);
 
-  // Get user's current city & pincode
+  /* Get Current Location */
+
   useEffect(() => {
     if (!navigator.geolocation) return;
 
     navigator.geolocation.getCurrentPosition(
-      async (position) => {
+      async ({ coords }) => {
         try {
-          const { latitude, longitude } = position.coords;
-
           const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.latitude}&lon=${coords.longitude}`
           );
 
           const data = await response.json();
@@ -62,11 +71,10 @@ export default function Checkout() {
           console.log(err);
         }
       },
-      () => {
-        console.log("Location permission denied");
-      }
+      () => console.log("Location permission denied")
     );
   }, []);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -79,22 +87,51 @@ export default function Checkout() {
     setError("");
   };
 
+
+
   const handleContinue = () => {
     if (
       !address.fullName.trim() ||
       !address.phone.trim() ||
       !address.address.trim()
     ) {
-      setError("Please fill address details");
+      setError("Please fill all required fields.");
       return;
     }
 
-    setError("");
+    let list =
+      JSON.parse(localStorage.getItem("addresses")) || [];
+
+    let savedAddress;
+
+    if (address.id) {
+      list = list.map((item) =>
+        item.id === address.id ? address : item
+      );
+
+      savedAddress = address;
+    } else {
+      savedAddress = {
+        ...address,
+        id: Date.now(),
+      };
+
+      list.push(savedAddress);
+    }
 
     localStorage.setItem(
-      "deliveryAddress",
-      JSON.stringify(address)
+      "addresses",
+      JSON.stringify(list)
     );
+
+    localStorage.setItem(
+      "selectedAddress",
+      JSON.stringify(savedAddress)
+    );
+
+    setAddresses(list);
+    setSelectedAddress(savedAddress);
+    setShowForm(false);
 
     navigate("/payment");
   };
@@ -103,6 +140,7 @@ export default function Checkout() {
     <div className="checkout-page">
 
       <header className="checkout-header">
+
         <button onClick={() => navigate(-1)}>
           <HiOutlineArrowLeft />
         </button>
@@ -111,6 +149,7 @@ export default function Checkout() {
           <h2>Checkout</h2>
           <p>Step 1 of 2</p>
         </div>
+
       </header>
 
       <div className="checkout-content">
@@ -122,46 +161,69 @@ export default function Checkout() {
           </div>
         )}
 
-        <AddressForm
-          address={address}
-          onChange={handleChange}
-        />
+        {/* Saved Addresses */}
 
-        {savedAddress && (
-          <div className="saved-address-card">
+        {!showForm && (
+          <>
+            <SavedAddresses
+              addresses={addresses}
+              selectedAddress={selectedAddress}
+              onSelect={setSelectedAddress}
+              setAddresses={setAddresses}
+              setAddress={setAddress}
+              setShowForm={setShowForm}
+              onAddNew={() => {
+                setAddress({
+                  type: "Home",
+                  fullName: "",
+                  phone: "",
+                  address: "",
+                  landmark: "",
+                  city: "",
+                  pincode: "",
+                });
 
-            <h3>Recently Used Address</h3>
-
-            <p><strong>{savedAddress.fullName}</strong></p>
-
-            <p>{savedAddress.address}</p>
-
-            {savedAddress.landmark && (
-              <p>{savedAddress.landmark}</p>
-            )}
-
-            <p>
-              {savedAddress.city} - {savedAddress.pincode}
-            </p>
-
-            <button
-              onClick={() => {
-                setAddress(savedAddress);
-                setError("");
+                setShowForm(true);
               }}
-            >
-              Use this Address
-            </button>
+            />
 
-          </div>
+            {addresses.length > 0 && (
+              <CheckoutButton
+                text="Use Address"
+                onClick={() => {
+                  localStorage.setItem(
+                    "selectedAddress",
+                    JSON.stringify(selectedAddress)
+                  );
+
+                  navigate("/payment");
+                }}
+              />
+            )}
+          </>
+        )}
+
+        {/* Address Form */}
+
+        {showForm && (
+          <>
+            <AddressForm
+              address={address}
+              onChange={handleChange}
+            />
+
+            <CheckoutButton
+              text={
+                address.id
+                  ? "Update Address"
+                  : "Save Address"
+              }
+              onClick={handleContinue}
+            />
+          </>
         )}
 
       </div>
-
-      <CheckoutButton
-        text="Continue to Payment"
-        onClick={handleContinue}
-      />
 
     </div>
   );
