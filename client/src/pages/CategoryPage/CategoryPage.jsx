@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { HiOutlineSearch } from "react-icons/hi";
 import { getProducts } from "../../services/productService";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./CategoryPage.css";
@@ -73,6 +74,7 @@ const CategoryPage = () => {
 
           {/* Search */}
           <div className="search-box">
+            <HiOutlineSearch className="search-icon" />
             <input 
               type="text"
               placeholder={`Search ${
