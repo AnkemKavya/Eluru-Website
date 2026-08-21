@@ -237,6 +237,67 @@
 }
 
 /* ==========================
+   Location Buttons
+========================== */
+
+.checkout-location-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.checkout-location-buttons button {
+    flex: 1;
+    min-height: 48px;
+
+    border: 1px solid #16a34a;
+    border-radius: 12px;
+
+    background: #ecfdf5;
+    color: #15803d;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.checkout-location-buttons button:hover {
+    background: #16a34a;
+    color: #fff;
+}
+
+.current-location-btn {
+    background: #16a34a;
+    color: #fff;
+}
+
+.current-location-btn:hover {
+    background: #15803d;
+}
+
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width: 480px) {
+
+   checkout-location-buttons  {
+        gap: 8px;
+    }
+
+    .checkout-location-buttons button {
+        min-height: 46px;
+        font-size: 13px;
+        padding: 0 8px;
+    }
+
+}
+
+/* ==========================
    Mobile
 ========================== */
 
