@@ -5,6 +5,7 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 import AddressForm from "../../components/Checkout/AddressForm";
 import CheckoutButton from "../../components/Checkout/CheckoutButton";
 import SavedAddresses from "../../components/Checkout/SavedAddresses";
+import LocationPicker from "../../components/Checkout/LocationPicker";
 
 import "./Checkout.css";
 
@@ -14,6 +15,7 @@ export default function Checkout() {
   const [addresses, setAddresses] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [showLocationPicker, setShowLocationPicker] = useState(false);
 
   const [address, setAddress] = useState({
     type: "Home",
@@ -23,11 +25,15 @@ export default function Checkout() {
     landmark: "",
     city: "",
     pincode: "",
+    latitude: "",
+    longitude: "",
   });
 
   const [error, setError] = useState("");
 
-  /* Load Saved Addresses */
+  /* ==========================
+     Load Saved Addresses
+  ========================== */
 
   useEffect(() => {
     const saved =
@@ -43,38 +49,9 @@ export default function Checkout() {
     }
   }, []);
 
-  /* Get Current Location */
-
-  useEffect(() => {
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      async ({ coords }) => {
-        try {
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.latitude}&lon=${coords.longitude}`
-          );
-
-          const data = await response.json();
-
-          setAddress((prev) => ({
-            ...prev,
-            city:
-              data.address.city ||
-              data.address.town ||
-              data.address.village ||
-              "",
-            pincode:
-              data.address.postcode || "",
-          }));
-        } catch (err) {
-          console.log(err);
-        }
-      },
-      () => console.log("Location permission denied")
-    );
-  }, []);
-
+  /* ==========================
+     Handle Input Changes
+  ========================== */
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,7 +64,9 @@ export default function Checkout() {
     setError("");
   };
 
-
+  /* ==========================
+     Save / Update Address
+  ========================== */
 
   const handleContinue = () => {
     if (
@@ -104,13 +83,21 @@ export default function Checkout() {
 
     let savedAddress;
 
+    /* Update existing address */
+
     if (address.id) {
       list = list.map((item) =>
-        item.id === address.id ? address : item
+        item.id === address.id
+          ? address
+          : item
       );
 
       savedAddress = address;
-    } else {
+    }
+
+    /* Add new address */
+
+    else {
       savedAddress = {
         ...address,
         id: Date.now(),
@@ -132,12 +119,59 @@ export default function Checkout() {
     setAddresses(list);
     setSelectedAddress(savedAddress);
     setShowForm(false);
+    setError("");
 
     navigate("/payment");
   };
 
+  /* ==========================
+     New Address
+  ========================== */
+
+  const handleAddNew = () => {
+    setAddress({
+      type: "Home",
+      fullName: "",
+      phone: "",
+      address: "",
+      landmark: "",
+      city: "",
+      pincode: "",
+      latitude: "",
+      longitude: "",
+    });
+
+    setError("");
+    setShowForm(true);
+  };
+
+  /* ==========================
+     Location Selected
+  ========================== */
+
+  const handleLocationSelected = (location) => {
+    setAddress((prev) => ({
+      ...prev,
+
+      address: location.address || "",
+      city: location.city || "",
+      pincode: location.pincode || "",
+      landmark: location.landmark || "",
+
+      latitude: location.latitude || "",
+      longitude: location.longitude || "",
+    }));
+
+    setShowLocationPicker(false);
+    setError("");
+  };
+
   return (
     <div className="checkout-page">
+
+      {/* ==========================
+          Header
+      ========================== */}
 
       <header className="checkout-header">
 
@@ -152,7 +186,14 @@ export default function Checkout() {
 
       </header>
 
+
+      {/* ==========================
+          Content
+      ========================== */}
+
       <div className="checkout-content">
+
+        {/* Error */}
 
         {error && (
           <div className="checkout-error">
@@ -161,36 +202,42 @@ export default function Checkout() {
           </div>
         )}
 
-        {/* Saved Addresses */}
+
+        {/* ==========================
+            SAVED ADDRESSES
+        ========================== */}
 
         {!showForm && (
           <>
             <SavedAddresses
               addresses={addresses}
               selectedAddress={selectedAddress}
-              onSelect={setSelectedAddress}
-              setAddresses={setAddresses}
-              setAddress={setAddress}
-              setShowForm={setShowForm}
-              onAddNew={() => {
-                setAddress({
-                  type: "Home",
-                  fullName: "",
-                  phone: "",
-                  address: "",
-                  landmark: "",
-                  city: "",
-                  pincode: "",
-                });
 
-                setShowForm(true);
-              }}
+              onSelect={setSelectedAddress}
+
+              setAddresses={setAddresses}
+
+              setAddress={setAddress}
+
+              setShowForm={setShowForm}
+
+              onAddNew={handleAddNew}
             />
+
+            {/* Use Selected Address */}
 
             {addresses.length > 0 && (
               <CheckoutButton
                 text="Use Address"
                 onClick={() => {
+
+                  if (!selectedAddress) {
+                    setError(
+                      "Please select an address."
+                    );
+                    return;
+                  }
+
                   localStorage.setItem(
                     "selectedAddress",
                     JSON.stringify(selectedAddress)
@@ -203,14 +250,51 @@ export default function Checkout() {
           </>
         )}
 
-        {/* Address Form */}
+
+        {/* ==========================
+            ADD / EDIT ADDRESS FORM
+        ========================== */}
 
         {showForm && (
           <>
+
+            {/* Location Buttons */}
+
+            <div className="checkout-location-buttons">
+
+              <button
+                type="button"
+                className="location-btn current-location-btn"
+                onClick={() =>
+                  setShowLocationPicker(true)
+                }
+              >
+                📍 Use Current Location
+              </button>
+
+
+              <button
+                type="button"
+                className="location-btn select-location-btn"
+                onClick={() =>
+                  setShowLocationPicker(true)
+                }
+              >
+                🗺️ Select Location
+              </button>
+
+            </div>
+
+
+            {/* Address Form */}
+
             <AddressForm
               address={address}
               onChange={handleChange}
             />
+
+
+            {/* Save / Update Button */}
 
             <CheckoutButton
               text={
@@ -220,10 +304,28 @@ export default function Checkout() {
               }
               onClick={handleContinue}
             />
+
           </>
         )}
 
       </div>
+
+
+      {/* ==========================
+          LOCATION PICKER
+      ========================== */}
+
+      {showLocationPicker && (
+        <LocationPicker
+          onClose={() =>
+            setShowLocationPicker(false)
+          }
+
+          onLocationSelected={
+            handleLocationSelected
+          }
+        />
+      )}
 
     </div>
   );
