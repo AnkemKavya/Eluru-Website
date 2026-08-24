@@ -1,8 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from "react";
+
+import Loader from "./components/Loader/Loader";
+
 import Home from './pages/Home/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Product from './pages/Product';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
 import Payment from "./pages/Payment/Payment";
@@ -16,6 +19,23 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500); // 2.5 seconds
+
+    return () => clearTimeout(timer);
+
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="app-shell">
       <main>
@@ -23,12 +43,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/product" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/order-details" element={<OrderDetails />} />
+          <Route path="/track-order/:id" element={<OrderDetails />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
