@@ -34,7 +34,7 @@ export default function Payment() {
     }
 
     const address = JSON.parse(
-      localStorage.getItem("deliveryAddress")
+      localStorage.getItem("selectedAddress")
     );
 
     const orders =
