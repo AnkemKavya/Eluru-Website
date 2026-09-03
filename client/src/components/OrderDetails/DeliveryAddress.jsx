@@ -3,7 +3,6 @@ import "./DeliveryAddress.css";
 
 import {
   HiOutlineLocationMarker,
-  HiOutlinePhone,
   HiOutlineUser,
 } from "react-icons/hi";
 
@@ -18,45 +17,53 @@ export default function DeliveryAddress({ address }) {
 
       <div className="delivery-info">
 
+        {/* Customer */}
+
         <div className="delivery-row">
 
-          <HiOutlineUser className="delivery-icon" />
-
-          <div>
-
-            <h4>{address.fullName}</h4>
-
-            <p>{address.phone}</p>
-
+          <div className="delivery-icon">
+            <HiOutlineUser />
           </div>
 
-        </div>
+          <div className="delivery-text">
 
-        <div className="delivery-row">
+            <h4 className="delivery-name">
+              {address.fullName}
+            </h4>
 
-          <HiOutlineLocationMarker className="delivery-icon" />
-
-          <div>
-
-            <p>{address.address}</p>
-
-            {address.landmark && (
-              <p>{address.landmark}</p>
-            )}
-
-            <p>
-              {address.city} - {address.pincode}
+            <p className="delivery-phone">
+              {address.phone}
             </p>
 
           </div>
 
         </div>
 
+        {/* Address */}
+
         <div className="delivery-row">
 
-          <HiOutlinePhone className="delivery-icon" />
+          <div className="delivery-icon">
+            <HiOutlineLocationMarker />
+          </div>
 
-          <p>{address.phone}</p>
+          <div className="delivery-text">
+
+            <h4>Delivery Address</h4>
+
+            <p className="delivery-address">
+              {address.address}
+            </p>
+
+            {address.landmark && (
+              <p>{address.landmark}</p>
+            )}
+
+            <p className="delivery-city">
+              {address.city} - {address.pincode}
+            </p>
+
+          </div>
 
         </div>
 
