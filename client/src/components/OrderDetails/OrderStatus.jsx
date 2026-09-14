@@ -9,6 +9,7 @@ const steps = [
 ];
 
 export default function OrderStatus({ status }) {
+
   const currentStep = steps.indexOf(status);
 
   return (
@@ -23,9 +24,12 @@ export default function OrderStatus({ status }) {
           const completed = index <= currentStep;
 
           return (
+
             <div
-              className="timeline-item"
               key={step}
+              className={`timeline-item ${
+                completed ? "active" : ""
+              }`}
             >
 
               <div className="timeline-left">
@@ -39,11 +43,15 @@ export default function OrderStatus({ status }) {
                 </div>
 
                 {index !== steps.length - 1 && (
+
                   <div
                     className={`timeline-line ${
-                      completed ? "completed" : ""
+                      index < currentStep
+                        ? "completed"
+                        : ""
                     }`}
                   />
+
                 )}
 
               </div>
@@ -54,13 +62,16 @@ export default function OrderStatus({ status }) {
 
                 <p>
                   {completed
-                    ? "Completed"
+                    ? index === currentStep
+                      ? "Current status"
+                      : "Completed"
                     : "Pending"}
                 </p>
 
               </div>
 
             </div>
+
           );
         })}
 
