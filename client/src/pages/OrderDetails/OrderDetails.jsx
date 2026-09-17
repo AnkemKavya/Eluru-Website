@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 
 import OrderStatus from "../../components/OrderDetails/OrderStatus";
@@ -11,10 +11,14 @@ import "./OrderDetails.css";
 
 export default function OrderDetails() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { id } = useParams();
 
-  // Order passed from Order Success or Orders page
-  const order = location.state?.order;
+  const orders =
+    JSON.parse(localStorage.getItem("orders")) || [];
+
+  const order = orders.find(
+    (o) => String(o.id) === id
+  );
 
   if (!order) {
     return (
@@ -45,13 +49,20 @@ export default function OrderDetails() {
         </button>
 
         <div>
+          <h2>Order {order.id}</h2>
 
-          <h2>
-            Order {order.orderId}
-          </h2>
-
-          <p>{order.date}</p>
-
+          <p>
+            {new Date(order.date).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })}
+            ,{" "}
+            {new Date(order.date).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
         </div>
 
       </header>
